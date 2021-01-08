@@ -15,33 +15,53 @@ public class GuiView {
     }
 
     public GUI_Field[] customFields() {
-        GUI_Field[] fields = new GUI_Field[20];
+        GUI_Field[] fields = new GUI_Field[40];
 
-        fields[0] = new GUI_Start("Start", "", "Hver gang du passerer start, modtager du 2 kr.", Color.GREEN.darker(), Color.BLACK);
-        fields[1] = new GUI_Street("Burgerbaren", "1M", "Få en burger på parkens bedste burgerbar. ('Bedste' nomineret af egen resturant.)", "1", Color.ORANGE, Color.BLACK);
-        fields[2] = new GUI_Street("Pizzariaet", "1M", "Hvis munden nu ikke er stor nok til den burger.", "1", Color.ORANGE, Color.BLACK);
-        fields[3] = new GUI_Street("Slikbutikken", "1M", "Til den lille slikmund.", "1", Color.BLUE.brighter(), Color.BLACK);
-        fields[4] = new GUI_Street("Iskiosken", "1M", "Hjælper når solen er fremme.", "1", Color.BLUE.brighter(), Color.BLACK);
-        fields[5] = new GUI_Jail();
-        fields[5].setSubText("");
-        fields[6] = new GUI_Street("Museet", "2M", "Både sjovt og lærerigt.", "2", Color.PINK, Color.BLACK);
-        fields[7] = new GUI_Street("Biblioteket", "2M", "Lærerigt, men ikke så sjovt som museet.", "2", Color.PINK, Color.BLACK);
-        fields[8] = new GUI_Street("Skaterparken", "3M", "Husk nu hjelmen.", "2", Color.YELLOW.brighter(), Color.BLACK);
-        fields[9] = new GUI_Street("Svømmingpoolen", "3M", "Ikke løbe ved poolen!.", "2", Color.YELLOW.brighter(), Color.BLACK);
-        fields[10] = new GUI_Refuge();
-        fields[10].setTitle("Gratis parkering");
-        fields[10].setSubText("");
-        fields[11] = new GUI_Street("Spillehallen", "4M", "Forældrenes undskyldning for deres ludomani.", "3", Color.RED, Color.BLACK);
-        fields[12] = new GUI_Street("Biografen", "4M", "Brug tid sammen med familien, uden at snakke med dem.", "3", Color.RED, Color.BLACK);
-        fields[13] = new GUI_Street("Legetøjsbutikken", "4M", "Hvem siger man ikke kan købe kærlighed.", "3", Color.YELLOW, Color.BLACK);
-        fields[14] = new GUI_Street("Dyrehandlen", "4M", "Hvis familien nu ikke er stor nok.", "3", Color.YELLOW, Color.BLACK);
-        fields[15] = new GUI_Shipping();
-        fields[15].setTitle("Gå i fængsel");
-        fields[15].setSubText("");
-        fields[16] = new GUI_Street("Bowlinghallen", "5M", "Når far skal vise sig.", "4", Color.GREEN, Color.BLACK);
-        fields[17] = new GUI_Street("Zoo", "5M", "Det eneste sted dine forældre tillader dyr.", "4", Color.GREEN, Color.BLACK);
-        fields[18] = new GUI_Street("Vandlandet", "5M", "Samme som poolen, bare dyrer.", "5", Color.BLUE.darker(), Color.WHITE);
-        fields[19] = new GUI_Street("Strandpromenaden", "5M", "Sand. Alle. Steder.", "5", Color.BLUE.darker(), Color.WHITE);
+        fields[0] = new GUI_Start("Start", "", "Hver gang du passerer start, modtager du 4000 kr.", Color.white.brighter(), Color.BLACK);
+        fields[1] = new GUI_Street("rødovrevej", "pris:600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[2] = new GUI_Street("prøvLykken", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[3] = new GUI_Street("hvidovrevej", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[4] = new GUI_Street("betalIndkomstskat", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[5] = new GUI_Street("scandlines", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[5] = new GUI_Street("roskildevej", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[6] = new GUI_Street("prøvLykken", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[7] = new GUI_Street("valbyLanggade", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[8] = new GUI_Street("allegade", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[9] = new GUI_Street("fængsel", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[10] = new GUI_Street("frederiksbergsAlle", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[11] = new GUI_Street("tuborg", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[12] = new GUI_Street("bulowsvej", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[13] = new GUI_Street("gammelKongevej", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[14] = new GUI_Street("Mols-Linien", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[15] = new GUI_Street("bernstorffsvej", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[16] = new GUI_Street("prøvLykken", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+
+        fields[17] = new GUI_Street("strandvejen", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[18] = new GUI_Street("Parkring", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[19] = new GUI_Street("Trlanglen", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[20] = new GUI_Street("prøvLykke", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[21] = new GUI_Street("østergade", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[21] = new GUI_Street("Grønningen", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[21] = new GUI_Street("kgsNytorv", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+
+        fields[22] = new GUI_Street("carlsberg", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[23] = new GUI_Street("østergade", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[24] = new GUI_Street("gåIFængsel", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[25] = new GUI_Street("amagertorv", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[26] = new GUI_Street("vimmelskaftet", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[27] = new GUI_Street("prøvLykken", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[28] = new GUI_Street("frederiksberggade", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);;
+        fields[29] = new GUI_Street("ekstraordinærStatsskat", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[30] = new GUI_Street("rådhuspladsen", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[31] = new GUI_Street("rødovrevej", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[32] = new GUI_Street("rødovrevej", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[33] = new GUI_Street("rødovrevej", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[34] = new GUI_Street("rødovrevej", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[35] = new GUI_Street("rødovrevej", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[36] = new GUI_Street("rødovrevej", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[37] = new GUI_Street("rødovrevej", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[38] = new GUI_Street("rødovrevej", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
+        fields[39] = new GUI_Street("rødovrevej", "600", "leje af grund:50,Med et Hus 250, to Huse 750, tre Huse 2250, fire huse 4000, Hotel 6000}, hus,hotel pris: 1000", "1", Color.BLUE, Color.white);
 
         return fields;
     }
