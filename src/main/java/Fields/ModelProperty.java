@@ -18,22 +18,6 @@ public class ModelProperty extends Field{
         this.rent = rent;
     }
 
-    public void setPropertyPrice(int propertyPrice) {
-        this.propertyPrice = propertyPrice;
-    }
-
-    public int getMortgage() {
-        return mortgage;
-    }
-
-    public void setMortgage(int mortgage) {
-        this.mortgage = mortgage;
-    }
-
-    public int getRent() {
-        return rent;
-    }
-
     public String getOwner() {
         return owner;
     }
