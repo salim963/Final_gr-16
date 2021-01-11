@@ -12,7 +12,7 @@ public class Field {
         this.backgroundColor = backgroundColor;
     }
 
-    public String get_name() {
+    public String getName() {
         return name;
     }
 

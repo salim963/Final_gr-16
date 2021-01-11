@@ -8,14 +8,14 @@ public class ControllerField {
     public Field[] fields;
 
     ControllerField(){
-        Creatfields();
+        createFields();
     }
 
-    public void Creatfields(){
+    public void createFields(){
 
-        fields= new Field[40];
+        fields = new Field[40];
 
-        fields[0] = new Start("start",null);
+        fields[0] = new Start("tart",null);
         fields[1] = new Estate("rødovrevej",Color.BLUE,1200, new int[]{50,250,750,2250,4000,6000}, 1000);
         fields[2] = new ChanceField("prøvLykken", null);
         fields[3] = new Estate("hvidovrevej",Color.BLUE,1200, new int[]{50,250,750,2250,4000,6000}, 1000);
@@ -57,23 +57,9 @@ public class ControllerField {
         fields[39] = new Estate("rådhuspladsen",Color.MAGENTA,8000,new int[]{1000,4000,12000,28000,34000,40000},4000);
     }
 
-   /* public int getFieldLength (){
-        return this.fields.length;
-    }*/
-
-
-
-
     public int getPropertyPrice(int fieldID){
 
-        return ((ModelProperty)fields[fieldID]).get_propertyPrice();
+        return ((ModelProperty)fields[fieldID]).getPropertyPrice();
     }
-
-    public String getPropertyMessage(int fieldID){
-
-        return ((Field)fields[fieldID]).get_name();
-    }
-
-
 
 }

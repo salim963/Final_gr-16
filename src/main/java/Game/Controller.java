@@ -10,7 +10,7 @@ import static java.lang.Thread.sleep;
 public class Controller {
 
     private GuiView guiView = new GuiView();
-    private ControllerField c_field = new ControllerField();
+    private ControllerField controllerField = new ControllerField();
     private Dice dice = new Dice();
     public Player player;
     int startPlayer=-1;
@@ -20,42 +20,38 @@ public class Controller {
     public Controller() {
 
         while (true) {
-            PlayerTurn();
-            UpdatePlayersPosition();
-            buyorSell();
+            playerTurn();
+            updatePlayersPosition();
+            buyAndSell();
             updatePlayerBalance(player);
         }
     }
 
 
     private Player nextPlayer(){
-
-
         startPlayer++;
         startPlayer %= guiView.player.length;
-        //guiView.player[startPlayer].setPlayerTurn(true);
         return guiView.player[startPlayer];
     }
 
-    public void PlayerTurn() {
-        player =  nextPlayer();
+    public void playerTurn() {
+        player = nextPlayer();
 
-        guiView.gui.showMessage(player.getName() + " s tur");
-        String tryk = guiView.gui.getUserSelection(player.getName() + "Do you want to rolle the dice", "Roll", "Don,t rolle");
+        guiView.gui.showMessage(player.getName() + "s tur");
+        String pressButton = guiView.gui.getUserSelection(player.getName() + " vil du gerne kaste terningerne?", "Ja", "Nej");
 
-        if (tryk.equals("Don,t rolle")) {
+        if (pressButton.equals("Nej")) {
             return;
         }
 
-
-        if (tryk.equals("Roll")) {
-            int rolle1 = dice.rolleDice();
-            int rolle2 = dice.rolleDice();
-            int sum =rolle1 +rolle2 ;
+        if (pressButton.equals("Ja")) {
+            int dice1 = dice.rollDice();
+            int dice2 = dice.rollDice();
+            int sum = dice1 + dice2;
             player.setNewPosition(sum);
 
-            for (int Rotat = 0; Rotat <= 500; Rotat++) {
-                guiView.gui.setDice(rolle1, Rotat, 3/2, 5,rolle2 , Rotat, 3, 5);// sum,Rotat,4, 1,sum, Rotat, 5, 1
+            for (int rotate = 0; rotate <= 500; rotate++) {
+                guiView.gui.setDice(dice1, rotate, 3/2, 5, dice2 , rotate, 3, 5);// sum,Rotat,4, 1,sum, Rotat, 5, 1
 
                 try {
                     sleep(1);
@@ -68,31 +64,26 @@ public class Controller {
 
     }
 
-    public void UpdatePlayersPosition() {
-        int CorrentPlayerPpstion = player.getPosition();
-        int MoveCorrentPlayerPpstionTo =  player.getPosition() +  player.getNewPosition();
-        int theDiffrentSpace = (guiView.gui.getFields().length + MoveCorrentPlayerPpstionTo - CorrentPlayerPpstion - 1) % guiView.gui.getFields().length + 1;
+    public void updatePlayersPosition() {
+        int currentPlayerPosition = player.getPosition();
+        int moveCurrentPlayerTo =  player.getPosition() +  player.getNewPosition();
+        int theDifferentSpace = (guiView.gui.getFields().length + moveCurrentPlayerTo - currentPlayerPosition - 1) % guiView.gui.getFields().length + 1;
 
-        for (int i = 0; i < theDiffrentSpace; i++) {
+        for (int i = 0; i < theDifferentSpace; i++) {
 
-            MoveCorrentPlayerPpstionTo = (CorrentPlayerPpstion + 1) % guiView.gui.getFields().length;//% fieldDesign.Design.length;
+            moveCurrentPlayerTo = (currentPlayerPosition + 1) % guiView.gui.getFields().length;
 
-            if (true) {
-                guiView.gui.getFields()[CorrentPlayerPpstion].setCar(guiView.guiPlayer[player.getPlayerId()], false);
-                guiView.gui.getFields()[MoveCorrentPlayerPpstionTo].setCar(guiView.guiPlayer[player.getPlayerId()], true);
-                try {
-                    sleep(170);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-                CorrentPlayerPpstion = (CorrentPlayerPpstion + 1) % guiView.gui.getFields().length;
-                player.setPosition(MoveCorrentPlayerPpstionTo);
-
-
-
-
+            guiView.gui.getFields()[currentPlayerPosition].setCar(guiView.guiPlayer[player.getPlayerId()], false);
+            guiView.gui.getFields()[moveCurrentPlayerTo].setCar(guiView.guiPlayer[player.getPlayerId()], true);
+            try {
+                sleep(170);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
+
+            currentPlayerPosition = (currentPlayerPosition + 1) % guiView.gui.getFields().length;
+            player.setPosition(moveCurrentPlayerTo);
+
         }
     }
 
@@ -102,7 +93,7 @@ public class Controller {
             GUI_Ownable ownable = (GUI_Ownable) guiView.gui.getFields()[fieldID];
             ownable.setBorder(guiView.getPlayerColor(playerID));
             ownable.setOwnerName(guiView.guiPlayer[playerID].getName());
-            ((ModelProperty)c_field.fields[fieldID]).set_owner(guiView.guiPlayer[playerID].getName());
+            ((ModelProperty) controllerField.fields[fieldID]).setOwner(guiView.guiPlayer[playerID].getName());
 
         } catch (RuntimeException e){
             System.out.println("WARNING" + guiView.gui.getFields()[fieldID].getClass().getName());
@@ -112,19 +103,13 @@ public class Controller {
 
     public String getPropertyOwner(int fieldID, int playerID){
 
-        String nam;
-        nam=((ModelProperty)c_field.fields[fieldID]).get_owner();
+        String name;
+        name=((ModelProperty) controllerField.fields[fieldID]).getOwner();
 
-        return nam;
+        return name;
     }
 
-    public String getFerryOwner(int fieldID, int playerID){
 
-        String nam;
-        nam=((Ferry)c_field.fields[fieldID]).get_owner();
-
-        return nam;
-    }
     public void updatePlayerBalance(Player player) {
         guiView.guiPlayer[player.getPlayerId()].setBalance(player.getBalance());
         player.setPosition(player.getPlayerId());
@@ -132,22 +117,23 @@ public class Controller {
 
     public void playerPayMoney(int chargeAmount){
 
-        int newbalance= player.getBalance()- chargeAmount;
+        int newBalance= player.getBalance() - chargeAmount;
 
-        player.setBalance(newbalance);
-    }
-    public void PlayerReciveMoney(String playerID, int chargeAmount){
-
-        int newbalance= player.getBalance()+ chargeAmount;
-
-        player.setBalance(newbalance);
-
+        player.setBalance(newBalance);
     }
 
+    public void playerReceiveMoney(String playerID, int chargeAmount){
 
-    public void buyorSell(){
+        int newBalance= player.getBalance()+ chargeAmount;
 
-        Field f = c_field.fields[player.getPosition()];
+        player.setBalance(newBalance);
+
+    }
+
+
+    public void buyAndSell(){
+
+        Field f = controllerField.fields[player.getPosition()];
         String t = String.valueOf(f);
         System.out.println(t + " " + "getFieldType");
 
@@ -155,13 +141,13 @@ public class Controller {
 
         if (Objects.equals(t, "Estate")){
 
-            String TheOwner = getPropertyOwner(player.getPosition(),player.getPlayerId());
-            if ( TheOwner == null ) {
-                int[] TheRent= ((Estate)c_field.fields[player.getPosition()]).getRent();
+            String owner = getPropertyOwner(player.getPosition(),player.getPlayerId());
+            if ( owner == null ) {
+                int[] TheRent= ((Estate) controllerField.fields[player.getPosition()]).getRent();
                 System.out.println(TheRent[0]+"The rent");
 
-                int PropertyPrice = c_field.getPropertyPrice(player.getPosition());
-                String buy = guiView.gui.getUserButtonPressed("Do you want to buy this field for" + " " + PropertyPrice , "Yes","No");
+                int PropertyPrice = controllerField.getPropertyPrice(player.getPosition());
+                String buy = guiView.gui.getUserButtonPressed("Vil du gerne købe denne felt for" + " " + PropertyPrice , "Ja","Nej");
 
 
                 //int newbalance= player.getBalance()  - PropertyPrice;
@@ -175,75 +161,45 @@ public class Controller {
                 }
 
 
-            }else if (TheOwner==player.getName()){
+            } else if (owner.equals(player.getName())){
 
-                guiView.gui.showMessage("you Alleredy owende the field and you do not have to paly any cost ");
-                return;
+                guiView.gui.showMessage(" Denne felt er allerede din, du skal ikke betale noget ");
 
 
-            } else if (TheOwner != null){
-                guiView.gui.showMessage("There is other player who wone this field " +"  " + TheOwner + " And you"+ player.getName()+ " have to pay rent to "+ TheOwner);
-                int[] TheRent= ((Estate)c_field.fields[player.getPosition()]).getRent();
+            } else {
+                guiView.gui.showMessage("Der er andre spillere der ejer dette her felt " + "  " + owner + " og du "+ player.getName()+ " betale lejepengene til "+ owner);
+                int[] TheRent= ((Estate) controllerField.fields[player.getPosition()]).getRent();
                 // add money to the owner player.
                 playerPayMoney(TheRent[0]);
                 //The player will pay to other player
-                getPlayer(TheOwner).addAmount(TheRent[0]);
-                updatePlayerBalance(getPlayer(TheOwner));
+                getPlayer(owner).addAmount(TheRent[0]);
+                updatePlayerBalance(getPlayer(owner));
 
             }
 
         }
 
 
-        else if (Objects.equals(t, "Tax")){
+        else if (Objects.equals(t, "Skat")){
 
-            ((Tax)c_field.fields[player.getPosition()]).getrent();
+            ((Tax) controllerField.fields[player.getPosition()]).getRent();
 
-            System.out.println("The Tax you have pay" +((Tax)c_field.fields[player.getPosition()]).getrent() );
-            playerPayMoney(((Tax)c_field.fields[player.getPosition()]).getrent());
+            System.out.println("Skat du skal betale" +((Tax) controllerField.fields[player.getPosition()]).getRent() );
+            playerPayMoney(((Tax) controllerField.fields[player.getPosition()]).getRent());
         }
 
+        else if(Objects.equals(t, "Parkering")){
 
-        else if (Objects.equals(t, "Ferry")){
-
-            String TheOwner = getFerryOwner(player.getPosition(),player.getPlayerId());
-            System.out.println(TheOwner);
-           /*if (TheOwner.equals(null)){
-                int PropertyPrice = c_field.getPropertyPrice(player.getPosition());
-                playerPayMoney(PropertyPrice);
-                setPropertyOwner(player.getPosition(),player.getPlayerId());
-            }else if (TheOwner != null){
-
-                int TheRent= ((Ferry)c_field.fields[player.getPosition()]).getrent();
-                playerPayMoney(TheRent);
-                getPlayer(TheOwner).addAmount(TheRent);
-                updatePlayerBalance(getPlayer(TheOwner));
-            }*/
-
-        }
-
-        else if(Objects.equals(t, "Parking")){
-
-            guiView.gui.showMessage(" you do not have to paly any cost it is free parking ");
-
+            guiView.gui.showMessage(" Du skal ikke betale noget, parkering er gratis ");
 
         }
 
 
-        else if(Objects.equals(t, "VisitJail")){
-
-
-
-
+        else if(Objects.equals(t, "Gå til fængsel")){
 
         }
         else if(Objects.equals(t, "ModelParking")){
             return;
-
-        }
-        else if(Objects.equals(t, "ModelParking")){
-            return;
-
         }
 
     }

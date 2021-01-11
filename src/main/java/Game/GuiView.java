@@ -13,10 +13,8 @@ public class GuiView {
 
 
     public GuiView() {
-
         gui = new GUI( new GUI_FieldDesigne().customFields(),Color.CYAN);
         setupPlayers();
-
     }
 
 
@@ -55,8 +53,8 @@ public class GuiView {
 
     public void setupPlayers() {
 
-       int number=  Integer.parseInt(requestNumberOfPlayers());
-       int balance=30000;
+       int number =  Integer.parseInt(requestNumberOfPlayers());
+       int balance = 30000;
 
         player = new Player[number];
 
@@ -74,7 +72,7 @@ public class GuiView {
     }
 
     public String requestNumberOfPlayers() {
-        return  gui.getUserSelection("Hvor mange spillere skal der være?", "2", "3","4","5","6");
+        return  gui.getUserSelection("Hvor mange spillere skal der være?",  "3","4","5","6");
     }
 
     public String messageToPlayer(String message) {

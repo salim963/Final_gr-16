@@ -12,8 +12,6 @@ public class Estate extends ModelProperty {
     private int[] rent;
     private int amountOfHouses;
 
-
-
     public void setRent(int[] rent) {
         this.rent = rent;
     }

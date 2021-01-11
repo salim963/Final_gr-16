@@ -10,7 +10,7 @@ public class Tax extends Field{
         this.rent = rent;
     }
 
-    public int getrent() {
+    public int getRent() {
         return rent;
     }
 

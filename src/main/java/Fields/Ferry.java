@@ -10,9 +10,10 @@ public class Ferry extends ModelProperty {
         rent = Math.max(rent, 0);
     }
 
-    public int getrent() {
+    public int getRent() {
         return rent;
     }
+
     @Override
     public String toString() {
         return "Ferry";
