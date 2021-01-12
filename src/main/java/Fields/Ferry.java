@@ -2,12 +2,15 @@ package Fields;
 
 import java.awt.*;
 
-public class Ferry extends ModelProperty {
+public class Ferry extends Field {
     private int rent;
+    private int propertyPrice;
 
     public Ferry(String name, Color backgroundColor, int propertyPrice, int rent) {
-        super(name, backgroundColor, propertyPrice, propertyPrice/2);
-        rent = Math.max(rent, 0);
+        super(name, backgroundColor);
+        this.propertyPrice=propertyPrice;
+        this.rent= rent;
+
     }
 
     public int getRent() {

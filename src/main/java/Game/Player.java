@@ -8,17 +8,7 @@ public class Player {
 
     private int playerId;
     private String name;
-    private int position=0;
-    public int newPosition;
     private int balance;
-
-    public int getNewPosition() {
-        return newPosition;
-    }
-
-    public void setNewPosition(int newPosition) {
-        this.newPosition = newPosition;
-    }
 
 
 
@@ -72,28 +62,33 @@ public class Player {
         this.balance = balance;
     }
 
-    public int getPosition() {
-        return position;
-    }
-
-    public void setPosition(int position) {
-        this.position = position;
-    }
-
-
     public int addAmount(int amount){
         this.balance += amount;
 
         return amount;
     }
 
-    @Override
-    public String toString() {
-        return "Bean.Player{" +
-                "name='" + name + '\'' +
-                ", balance=" + balance +
-                '}';
+
+
+    public int getCurrentPosition() {
+        return currentPosition;
     }
+
+    public void setCurrentPosition(int currentPosition) {
+        this.currentPosition = currentPosition;
+    }
+
+    public int getNewPosition() {
+        return newPosition;
+    }
+
+    public void setNewPosition(int newPosition) {
+        this.newPosition = newPosition;
+    }
+
+    private int currentPosition;
+    private int newPosition;
+
 
 
 }

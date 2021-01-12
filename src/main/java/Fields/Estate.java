@@ -2,41 +2,43 @@ package Fields;
 
 import java.awt.*;
 
-public class Estate extends ModelProperty {
+public class Estate extends Field {
 
 
     public int[] getRent() {
         return rent;
     }
 
-    private int[] rent;
-    private int amountOfHouses;
-
     public void setRent(int[] rent) {
         this.rent = rent;
     }
 
-    public int getAmountOfHouses() {
-        return amountOfHouses;
+    private int[] rent;
+
+    public int getPropertyPrice() {
+        return propertyPrice;
     }
 
-    public void setAmountOfHouses(int amountOfHouses) {
-        this.amountOfHouses = amountOfHouses;
+    public void setPropertyPrice(int propertyPrice) {
+        this.propertyPrice = propertyPrice;
     }
 
-    public int getHousePrice() {
-        return housePrice;
+    private int propertyPrice;
+
+    public String getOwner() {
+        return Owner;
     }
 
-    public void setHousePrice(int housePrice) {
-        this.housePrice = housePrice;
+    public void setOwner(String owner) {
+        Owner = owner;
     }
 
-    private int housePrice;
+    private String Owner;
 
 
-    public Estate(String name, Color backgroundColor, int propertyPrice, int[] rent, int mortgage) {
-        super(name, backgroundColor, propertyPrice, propertyPrice/2);
+    public Estate(String name, Color backgroundColor, int propertyPrice, int[] rent) {
+        super(name, backgroundColor);
+        this.propertyPrice=propertyPrice;
         this.rent = rent.clone();
     }
 

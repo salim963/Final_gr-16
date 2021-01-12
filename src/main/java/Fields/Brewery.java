@@ -2,12 +2,12 @@ package Fields;
 
 import java.awt.*;
 
-public class Brewery extends ModelProperty {
+public class Brewery extends Field {
     private int rent;
 
     public Brewery(String name, Color backgroundColor, int propertyPrice, int rent) {
-        super(name, backgroundColor, propertyPrice, propertyPrice/2);
-        rent = Math.max(rent, 0);
+        super(name, backgroundColor);
+        this.rent=rent;
     }
 
     public String toString() {

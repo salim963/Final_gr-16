@@ -72,7 +72,7 @@ public class GuiView {
     }
 
     public String requestNumberOfPlayers() {
-        return  gui.getUserSelection("Hvor mange spillere skal der være?",  "3","4","5","6");
+        return  gui.getUserSelection("Hvor mange spillere skal der være?",  "2","3","4","5","6");
     }
 
     public String messageToPlayer(String message) {
