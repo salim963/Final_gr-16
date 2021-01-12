@@ -227,6 +227,7 @@ public class Controller {
             //The player will pay to other player
             getPlayer(TheOwner).addAmount(TheRent[0]);
             updatePlayerBalance(getPlayer(TheOwner));
+            // har
 
         }
 
