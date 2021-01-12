@@ -14,7 +14,6 @@ public class Player {
 
 
     private String name;
-    private boolean playerTurn = false;
     private int playerNumber;
     private int playerPos=0;
     private Color color;
@@ -34,20 +33,10 @@ public class Player {
         return playerNumber;
     }
 
-    public int setPlayerNumber(int playerNumber) {
-        this.playerNumber = playerNumber;
-        return playerNumber;
-    }
     public int getPlayerPos() {
         return playerPos;
     }
 
-    public void reciveToPlayer(int chargeAmount){
-
-        int newbalance= getBalance()+ chargeAmount;
-
-        setBalance(newbalance);
-    }
 
     public int setPlayerPos(int playerPos) {
         this.playerPos = playerPos;
@@ -70,13 +59,6 @@ public class Player {
         this.balance = balance;
     }
 
-    public boolean isPlayerTurn() {
-        return playerTurn;
-    }
-
-    public void setPlayerTurn(boolean playerTurn) {
-        this.playerTurn = playerTurn;
-    }
 
     public int getPlayerMoveToNewPos() {
         return PlayerMoveToNewPos;

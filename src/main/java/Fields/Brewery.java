@@ -9,6 +9,9 @@ public class Brewery extends Field {
         super(name, backgroundColor);
         this.rent=rent;
     }
+    public int getRent() {
+        return rent;
+    }
 
     public String toString() {
         return "Brewery";

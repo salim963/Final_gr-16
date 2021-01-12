@@ -15,7 +15,7 @@ public class ControllerField {
 
         fields = new Field[40];
 
-        fields[0] = new Start("tart",null);
+        fields[0] = new Start("ٍstart",null);
         fields[1] = new Estate("rødovrevej",Color.BLUE,1200, new int[]{50,250,750,2250,4000,6000});
         fields[2] = new ChanceField("prøvLykken", null);
         fields[3] = new Estate("hvidovrevej",Color.BLUE,1200, new int[]{50,250,750,2250,4000,6000});

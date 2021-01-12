@@ -11,6 +11,10 @@ public class Ferry extends Field {
         this.propertyPrice=propertyPrice;
         this.rent= rent;
 
+
+    }
+    public int getPropertyPrice() {
+        return propertyPrice;
     }
 
     public int getRent() {
