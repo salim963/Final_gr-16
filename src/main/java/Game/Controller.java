@@ -15,8 +15,6 @@ public class Controller {
     public Player player;
     int startPlayer=-1;
 
-
-
     public Controller() {
 
         while (true) {
@@ -29,25 +27,19 @@ public class Controller {
 
 
     private Player nextPlayer(){
-
-
         startPlayer++;
         startPlayer %= guiView.player.length;
-        guiView.player[startPlayer].setPlayerTurn(true);
         return guiView.player[startPlayer];
     }
 
     int sum;
     public void PlayerTurn() {
         player =  nextPlayer();
-
         guiView.gui.showMessage(player.getName() + " s tur");
         String tryk = guiView.gui.getUserSelection(player.getName() + "Do you want to rolle the dice", "Roll", "Don,t rolle");
-
         if (tryk.equals("Don,t rolle")) {
             return;
         }
-
 
         if (tryk.equals("Roll")) {
             int rolle1 = dice.rollDice();
@@ -131,8 +123,6 @@ public class Controller {
         String t = String.valueOf(f);
         System.out.println(t + " " + "getFieldType");
 
-
-
         if (Objects.equals(t, "Estate")){
 
             String TheOwner = getPropertyOwner(player.getPlayerPos(),player.getPlayerNumber());
@@ -142,7 +132,6 @@ public class Controller {
 
                 int PropertyPrice = c_field.getPropertyPrice(player.getPlayerPos());
                 String buy = guiView.gui.getUserButtonPressed("Do you want to buy this field for" + " " + PropertyPrice , "Yes","No");
-
 
                 //int newbalance= player.getBalance()  - PropertyPrice;
                 if (buy.equals("Yes")) {
