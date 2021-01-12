@@ -172,9 +172,16 @@ public class Controller {
 
     public void EstateEdition(){
 
+
         String TheOwner = getPropertyOwner(player.getPlayerPos(),player.getPlayerNumber());
         if ( TheOwner == null ) {
 
+
+
+
+        if ( TheOwner == null ) {
+            int[] TheRent= ((Estate)c_field.fields[player.getPlayerPos()]).getRent();
+            System.out.println(TheRent[0]+"The rent");
 
 
             int PropertyPrice = c_field.getPropertyPrice(player.getPlayerPos());
@@ -184,8 +191,12 @@ public class Controller {
             if (buy.equals("Yes")) {
 
                 playerPayMoney(PropertyPrice);
+
                 updatePlayerBalance(player);
                 setPropertyOwner(player.getPlayerPos());
+
+
+
 
             }if (buy.equals("No")) {
                 return;
@@ -194,11 +205,16 @@ public class Controller {
 
         }else if (TheOwner==player.getName()){
 
+
             guiView.gui.showMessage("you Already owned the field and you do not have to pay any cost ");
+
+            guiView.gui.showMessage("you Alleredy owende the field and you do not have to paly any cost ");
+
             return;
 
 
         } else if (TheOwner != null){
+
                 /*int[] TheRent= ((Estate)c_field.fields[player.getPlayerPos()]).getRent();
                 System.out.println(TheRent[0]+"The rent");*/
 
@@ -206,6 +222,7 @@ public class Controller {
             int[] TheRent= ((Estate)c_field.fields[player.getPlayerPos()]).getRent();
             // add money to the owner player.
             playerPayMoney(TheRent[0]);
+
             updatePlayerBalance(player);
             //The player will pay to other player
             getPlayer(TheOwner).addAmount(TheRent[0]);
@@ -215,6 +232,9 @@ public class Controller {
 
     }
 
+
+
+    }
 
 
 
