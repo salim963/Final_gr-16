@@ -105,11 +105,9 @@ public class GuiView {
 
     public void setupPlayers() {
 
-       int number =  Integer.parseInt(requestNumberOfPlayers());
+       int number =  Integer.parseInt(gui.getUserSelection("Hvor mange spillere skal der være?",  "2","3","4","5","6"));
        int balance = 30000;
-
-        player = new Player[number];
-
+       player = new Player[number];
         for (int i = 0; i < number; i++) {
 
             String playerName = messageToPlayer("Spiller " + (i + 1) + ", indtast dit navn");
@@ -123,15 +121,13 @@ public class GuiView {
         }
     }
 
-    public String requestNumberOfPlayers() {
-        return  gui.getUserSelection("Hvor mange spillere skal der være?",  "2","3","4","5","6");
-    }
 
     public String messageToPlayer(String message) {
         return gui.getUserString(message);
     }
 
     public void addUIPlayer(Player player, int amountOfPlayers) {
+
         if (guiPlayer == null) {
             guiPlayer = new GUI_Player[amountOfPlayers];
         }

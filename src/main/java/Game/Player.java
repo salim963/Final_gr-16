@@ -10,6 +10,7 @@ public class Player {
         this.name = name;
         this.playerNumber = playerNumber;
         this.balance= balance;
+
     }
 
 

@@ -14,7 +14,7 @@ public class Controller {
     private ControllerField c_field = new ControllerField();
     private Dice dice = new Dice();
     public Player player;
-    int startPlayer=-1;
+    int startPlayer=0;
 
     public Controller() {
 
@@ -37,6 +37,7 @@ public class Controller {
     public void PlayerTurn() {
         player =  nextPlayer();
         guiView.gui.showMessage(player.getName() + " s tur");
+
         String tryk = guiView.gui.getUserSelection(player.getName() + "Do you want to rolle the dice", "Roll", "Don,t rolle");
         if (tryk.equals("Don,t rolle")) {
             return;
@@ -82,7 +83,8 @@ public class Controller {
         try{
             GUI_Ownable ownable = (GUI_Ownable) guiView.gui.getFields()[fieldID];
             ownable.setBorder(guiView.getPlayerColor(player.getPlayerNumber()));
-            ownable.setOwnerName(guiView.guiPlayer[player.getPlayerNumber()].getName());
+            ownable.setOwnerName(player.getName());
+            //iView.guiPlayer[player.getPlayerNumber()].getName()
             ((Estate)c_field.fields[fieldID]).setOwner(guiView.guiPlayer[player.getPlayerNumber()].getName());
 
         } catch (RuntimeException e){
@@ -181,10 +183,7 @@ public class Controller {
 
     public void EstateEdition(){
 
-
         String TheOwner = getPropertyOwner(player.getPlayerPos());
-
-
 
         if ( TheOwner == null ) {
             int[] TheRent= ((Estate)c_field.fields[player.getPlayerPos()]).getRent();
@@ -210,7 +209,7 @@ public class Controller {
         }else if (TheOwner==player.getName()){
 
 
-            guiView.gui.showMessage("you Already owned  the field so you don't have to pay any cost ");
+            guiView.gui.showMessage("you Already owned the field so you don't have to pay any cost ");
 
 
             return;
