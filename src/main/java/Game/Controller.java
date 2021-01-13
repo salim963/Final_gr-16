@@ -2,6 +2,7 @@ package Game;
 
 import Fields.*;
 import gui_fields.GUI_Ownable;
+import gui_fields.GUI_Street;
 
 import java.util.Objects;
 
@@ -129,6 +130,7 @@ public class Controller {
 
             EstateEdition();
 
+
         }
 
 
@@ -167,6 +169,13 @@ public class Controller {
             if (aPlayer.getName().equals(name)) return aPlayer;
         }
         return null;
+    }
+
+
+    public void payAHouse(){
+
+        GUI_Street street = (GUI_Street) guiView.gui.getFields()[player.getPlayerPos()];
+        street.setHouses(0);
     }
 
 

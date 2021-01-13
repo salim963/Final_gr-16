@@ -9,10 +9,10 @@ public class GuiView {
     public GUI gui;
     public GUI_Player[] guiPlayer;
     public Player[] player;
-
     public GUI_Field[] fields;
 
     public  GUI_Field[] customFields() {
+
         fields = new GUI_Field[40];
 
         fields[0] = new GUI_Start("Start", "", "Hver gang du passerer start, modtager du 4000 kr.", Color.white.brighter(), Color.BLACK);
