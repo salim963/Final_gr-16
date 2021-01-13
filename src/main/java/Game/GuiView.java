@@ -139,4 +139,3 @@ public class GuiView {
         gui.addPlayer(guiPlayer[player.getPlayerNumber()]);
     }
 }
-

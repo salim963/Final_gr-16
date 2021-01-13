@@ -210,7 +210,7 @@ public class Controller {
         }else if (TheOwner==player.getName()){
 
 
-            guiView.gui.showMessage("you Already owned the field and you do not have to pay any cost ");
+            guiView.gui.showMessage("you Already owned  the field so you don't have to pay any cost ");
 
 
             return;
@@ -221,7 +221,7 @@ public class Controller {
                 /*int[] TheRent= ((Estate)c_field.fields[player.getPlayerPos()]).getRent();
                 System.out.println(TheRent[0]+"The rent");*/
 
-            guiView.gui.showMessage("There is other player who woned this field " +"  " + TheOwner + " And you"+ player.getName()+ " have to pay rent to "+ TheOwner);
+            guiView.gui.showMessage("There is other player who owms this field " +", his/her name is   " + TheOwner + " so you " + " have to pay the rent to " + TheOwner);
             int[] TheRent= ((Estate)c_field.fields[player.getPlayerPos()]).getRent();
             // add money to the owner player.
             playerPayMoney(TheRent[0]);
@@ -229,7 +229,7 @@ public class Controller {
             //The player will pay to other player
             getPlayer(TheOwner).addAmount(TheRent[0]);
             updatePlayerBalance(getPlayer(TheOwner));
-            // har
+            //
 
         }
 
