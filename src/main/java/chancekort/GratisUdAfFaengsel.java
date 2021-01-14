@@ -1,4 +1,4 @@
-package Chancekort;
+package chancekort;
 
 
 public class GratisUdAfFaengsel extends Chancekort {

@@ -1,12 +1,12 @@
-package Chancekort;
+package chancekort;
 
 // Denne klasse er hvorfra al nedarvning til de andre klasser stammer fra.
 
 public abstract class Chancekort {
 
-    private String beskrivelse;             // Beskrivelsen der bruges, når man bruger / trækker kortet
-    private String kortBeskrivelse = "";    // Beskrivelsen der bruges i lister
-    private boolean direkteAktion;          // True: Kortet bruges når det trækkes, False: kortet tages op på hånden
+    private final String beskrivelse;             // Beskrivelsen der bruges, når man bruger / trækker kortet
+    private String kortBeskrivelse = "";    // Kortbeskrivelser fra ChancekortGenerator
+    private final boolean direkteAktion;          // True: Kortet bruges når det trækkes, False: kortet tages op på hånden
 
 
 
