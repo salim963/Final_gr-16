@@ -71,10 +71,10 @@ public class GuiView {
 
 
     public GUI_Car vehicleChoice(int playerId) {
-        String vehicle = gui.getUserSelection("Vælg din transport", "Bil", "Traktor", "UFO");
+        String vehicle = gui.getUserSelection(" Choose your vehicle ", "Car", "Traktor", "UFO");
         Color color = getPlayerColor(playerId);
 
-        if (vehicle.equals("Bil")) {
+        if (vehicle.equals("Car")) {
             return new GUI_Car(color, color, GUI_Car.Type.CAR, GUI_Car.Pattern.ZEBRA);
         } else if (vehicle.equals("Traktor")) {
             return new GUI_Car(color, color, GUI_Car.Type.TRACTOR, GUI_Car.Pattern.FILL);
@@ -105,15 +105,15 @@ public class GuiView {
 
     public void setupPlayers() {
 
-       int number =  Integer.parseInt(gui.getUserSelection("Hvor mange spillere skal der være?",  "2","3","4","5","6"));
+       int number =  Integer.parseInt(gui.getUserSelection("How many players should be there ?",  "2","3","4","5","6"));
        int balance = 30000;
        player = new Player[number];
         for (int i = 0; i < number; i++) {
 
-            String playerName = messageToPlayer("Spiller " + (i + 1) + ", indtast dit navn");
+            String playerName = messageToPlayer("Player " + (i + 1) + ", Enter your name");
 
             if (playerName.equals("")) {
-                playerName = "Spiller" + (i + 1);
+                playerName = "Player " + (i + 1);
             }
 
             player[i] = new Player(playerName,i, balance);
@@ -134,4 +134,10 @@ public class GuiView {
         guiPlayer[player.getPlayerNumber()] = new GUI_Player(player.getName(), player.getBalance(), vehicleChoice(player.getPlayerNumber()));
         gui.addPlayer(guiPlayer[player.getPlayerNumber()]);
     }
+
+
+
+
+
 }
+
