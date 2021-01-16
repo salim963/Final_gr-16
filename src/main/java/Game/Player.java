@@ -33,6 +33,16 @@ public class Player {
 
     private boolean dead;
 
+    public boolean isPlayerInJail() {
+        return PlayerInJail;
+    }
+
+    public void setPlayerInJail(boolean playerInJail) {
+        PlayerInJail = playerInJail;
+    }
+
+    private boolean PlayerInJail;
+
 
 
 
@@ -55,6 +65,8 @@ public class Player {
 
 
     public int setPlayerPos(int playerPos) {
+
+
         this.playerPos = playerPos;
         return playerPos;
     }
