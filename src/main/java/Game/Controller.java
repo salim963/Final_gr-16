@@ -325,11 +325,8 @@ public class Controller {
         guiView.gui.showMessage(" you do not have to pay any cost it is free parking ");
 
     }
-    public void getmoneystart() {
 
 
     }
 
 
-
-}
