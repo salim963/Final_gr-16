@@ -7,7 +7,6 @@ public class ChanceCard {
     private ArrayList<String> cardDescription;
     private ArrayList<Integer> cardValue;
 
-
     public ChanceCard() {
         this.cardDescription = cardDescription();
         this.cardValue = cardValue();

@@ -13,7 +13,6 @@ public class Player {
 
     }
 
-
     private String name;
     private int playerNumber;
     private int playerPos=0;
