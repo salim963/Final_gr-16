@@ -328,15 +328,14 @@ public class Controller {
     }
 
 
-    }
 
-    public void GotoJailEdition(){
+
+    public void GotoJailEdition() {
 
         guiView.gui.showMessage(" You have to go to Jail");
-       // player.setPlayerInJail(true);
+        // player.setPlayerInJail(true);
         player.setPlayerMoveToNewPos(20);
         UpdatePlayersPosition();
 
-    }
-
+    }}
 
