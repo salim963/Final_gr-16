@@ -46,7 +46,6 @@ public class Controller {
 
     public void Playerlost(){
 
-
         if (player.isDead()){
             System.out.println("PlayerIsDead");
             player =  nextPlayer();
