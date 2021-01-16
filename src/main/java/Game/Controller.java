@@ -127,7 +127,9 @@ public class Controller {
         if (CorrentPlayerPpstion >= MoveCorrentPlayerPpstionTo ){
             PlayerReciveMoney(4000);
             updatePlayerBalance(player);
+
         }
+
 
 
 
@@ -336,6 +338,7 @@ public class Controller {
         // player.setPlayerInJail(true);
         player.setPlayerMoveToNewPos(20);
         UpdatePlayersPosition();
+        playerPayMoney(4000);
 
     }}
 
