@@ -10,7 +10,7 @@ public class DiceTest {
     Dice dice = new Dice();
 
     @Test
-    public void rolleDice() {
+    void rolleDice() {
 
         int value = dice.rollDice();
         assertEquals(value >= 1 && value <= 6,true ,"Test" );

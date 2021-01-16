@@ -38,8 +38,7 @@ public class Controller {
             //Playerlost();
 
             PlayerTurn();
-            UpdatePlayersPosition();
-            buyorSell();
+            fieldsDefinition();
             updatePlayerBalance(player);
 
         }
@@ -89,8 +88,8 @@ public class Controller {
         }
 
         if (tryk.equals("Roll")) {
-            int rolle1 = dice.rollDice();
-            int rolle2 = dice.rollDice();
+            int rolle1 =  dice.rollDice();
+            int rolle2 =  dice.rollDice();
             sum=rolle1 +rolle2 ;
 
             player.setPlayerMoveToNewPos(sum);
@@ -106,6 +105,8 @@ public class Controller {
                 }
             }
 
+            UpdatePlayersPosition();
+
         }
 
     }
@@ -115,9 +116,11 @@ public class Controller {
         int CorrentPlayerPpstion = player.getPlayerPos();
         int MoveCorrentPlayerPpstionTo = (player.getPlayerPos() + player.getPlayerMoveToNewPos())% guiView.gui.getFields().length;
 
-        guiView.gui.getFields()[CorrentPlayerPpstion].setCar(guiView.guiPlayer[player.getPlayerNumber()], false);
-        guiView.gui.getFields()[MoveCorrentPlayerPpstionTo].setCar(guiView.guiPlayer[player.getPlayerNumber()], true);
-        player.setPlayerPos(MoveCorrentPlayerPpstionTo);
+
+            guiView.gui.getFields()[CorrentPlayerPpstion].setCar(guiView.guiPlayer[player.getPlayerNumber()], false);
+
+            guiView.gui.getFields()[MoveCorrentPlayerPpstionTo].setCar(guiView.guiPlayer[player.getPlayerNumber()], true);
+            player.setPlayerPos(MoveCorrentPlayerPpstionTo );
 
 
         // tilføj 4000 hver gange passer start field
@@ -128,12 +131,8 @@ public class Controller {
 
 
 
-        }
 
-
-
-
-
+    }
 
 
     public void setPropertyOwner(int fieldID){
@@ -179,11 +178,11 @@ public class Controller {
 
     }
 
-    public void buyorSell(){
+    public void fieldsDefinition(){
 
         Field f = c_field.fields[player.getPlayerPos()];
         String t = String.valueOf(f);
-        System.out.println(t + " " + "FieldType");
+        System.out.println(t + " " + "field_Type");
 
         if (Objects.equals(t, "Estate")){
             EstateEdition();
@@ -207,9 +206,11 @@ public class Controller {
 
         else if(Objects.equals(t, "ChanceField")){
 
-
-
+        } else if(Objects.equals(t, "GotoJail")){
+            GotoJailEdition();
         }
+
+
     }
 
 
@@ -327,6 +328,15 @@ public class Controller {
     }
     public void getmoneystart() {
 
+
+    }
+
+    public void GotoJailEdition(){
+
+        guiView.gui.showMessage(" You have to go to Jail");
+       // player.setPlayerInJail(true);
+        player.setPlayerMoveToNewPos(20);
+        UpdatePlayersPosition();
 
     }
 
