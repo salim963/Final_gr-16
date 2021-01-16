@@ -1,6 +1,9 @@
 package Game;
 
-import Fields.*;
+import Fields.Estate;
+import Fields.Ferry;
+import Fields.Field;
+import Fields.Tax;
 import gui_fields.GUI_Ownable;
 import gui_fields.GUI_Street;
 
@@ -14,17 +17,9 @@ public class Controller {
     private ControllerField c_field = new ControllerField();
     private Dice dice = new Dice();
     public Player player;
-    int startPlayer=0;
+    int startPlayer = -1;
 
-    public Controller() {
 
-        while (true) {
-            PlayerTurn();
-            UpdatePlayersPosition();
-            buyorSell();
-           updatePlayerBalance(player);
-        }
-    }
 
 
     private Player nextPlayer(){
@@ -33,9 +28,59 @@ public class Controller {
         return guiView.player[startPlayer];
     }
 
+    public Controller() {
+
+
+        while (true) {
+
+            player =  nextPlayer();
+
+            //Playerlost();
+
+            PlayerTurn();
+            UpdatePlayersPosition();
+            buyorSell();
+            updatePlayerBalance(player);
+
+        }
+    }
+
+    public void Playerlost(){
+
+
+        if (player.isDead()){
+            System.out.println("PlayerIsDead");
+            player =  nextPlayer();
+        }
+
+
+        if (player.getBalance()<=0){
+
+            player.setDead(true);
+
+            guiView.player[player.getPlayerNumber()].isDead();
+
+            guiView.gui.getFields()[player.getPlayerPos()].setCar(guiView.guiPlayer[player.getPlayerNumber()],false);
+            guiView.gui.getFields()[0].setCar(guiView.guiPlayer[player.getPlayerNumber()],true);
+
+        }/*else if (0==0){
+            player.isDead();
+        }*/
+
+    }
+
+
+
+
+
+
+
+
+
     int sum;
     public void PlayerTurn() {
-        player =  nextPlayer();
+
+
         guiView.gui.showMessage(player.getName() + " s tur");
 
         String tryk = guiView.gui.getUserSelection(player.getName() + "Do you want to rolle the dice", "Roll", "Don,t rolle");
@@ -64,6 +109,7 @@ public class Controller {
         }
 
     }
+
     public void UpdatePlayersPosition() {
 
         int CorrentPlayerPpstion = player.getPlayerPos();
@@ -76,6 +122,11 @@ public class Controller {
 
 
     }
+
+
+
+
+
 
 
     public void setPropertyOwner(int fieldID){
@@ -121,7 +172,6 @@ public class Controller {
 
     }
 
-
     public void buyorSell(){
 
         Field f = c_field.fields[player.getPlayerPos()];
@@ -129,31 +179,19 @@ public class Controller {
         System.out.println(t + " " + "FieldType");
 
         if (Objects.equals(t, "Estate")){
-
             EstateEdition();
-
-
         }
-
 
         else if (Objects.equals(t, "Tax")){
-
-            ((Tax)c_field.fields[player.getPlayerPos()]).getRent();
-
-            System.out.println("The Tax you have to pay" +((Tax)c_field.fields[player.getPlayerPos()]).getRent() );
-            playerPayMoney(((Tax)c_field.fields[player.getPlayerPos()]).getRent());
+            PayTax();
         }
 
-
         else if (Objects.equals(t, "Ferry")){
-
+            FerryEdition();
         }
 
         else if(Objects.equals(t, "Parking")){
-
-            guiView.gui.showMessage(" you do not have to paly any cost it is free parking ");
-
-
+            parkingEdition();
         }
 
         else if(Objects.equals(t, "VisitJail")){
@@ -162,8 +200,12 @@ public class Controller {
 
         else if(Objects.equals(t, "ChanceField")){
 
+
+
         }
     }
+
+
 
 
     public Player getPlayer(String name) {
@@ -198,27 +240,17 @@ public class Controller {
                 updatePlayerBalance(player);
                 setPropertyOwner(player.getPlayerPos());
 
-
-
-
             }if (buy.equals("No")) {
                 return;
             }
 
 
         }else if (TheOwner==player.getName()){
-
-
             guiView.gui.showMessage("you Already owned the field so you don't have to pay any cost ");
-
-
             return;
 
 
         } else if (TheOwner != null){
-
-                /*int[] TheRent= ((Estate)c_field.fields[player.getPlayerPos()]).getRent();
-                System.out.println(TheRent[0]+"The rent");*/
 
             guiView.gui.showMessage("There is other player who owms this field " +", his/her name is   " + TheOwner + " so you " + " have to pay the rent to " + TheOwner);
             int[] TheRent= ((Estate)c_field.fields[player.getPlayerPos()]).getRent();
@@ -231,10 +263,59 @@ public class Controller {
             //
 
         }
+    }
+
+    public void PayTax(){
+
+        ((Tax)c_field.fields[player.getPlayerPos()]).getRent();
+
+        System.out.println("The Tax you have to pay" +((Tax)c_field.fields[player.getPlayerPos()]).getRent() );
+        playerPayMoney(((Tax)c_field.fields[player.getPlayerPos()]).getRent());
+    }
+
+    public void FerryEdition(){
 
 
+        String TheOwner =((Ferry)c_field.fields[player.getPlayerPos()]).getOwner();
+
+        if ( TheOwner == null ) {
+
+            int PropertyPrice = ((Ferry)c_field.fields[player.getPlayerPos()]).getPropertyPrice();
+
+            String buy = guiView.gui.getUserButtonPressed("Do you want to buy this field for" + " " + PropertyPrice , "Yes","No");
+
+            if (buy.equals("Yes")) {
+                playerPayMoney(PropertyPrice);
+                updatePlayerBalance(player);
+                setPropertyOwner(player.getPlayerPos());
+
+            }if (buy.equals("No")) {
+                return;
+            }
 
 
+        }else if (TheOwner==player.getName()){
+            guiView.gui.showMessage("you Already owned the field so you don't have to pay any cost ");
+            return;
+
+
+        } else if (TheOwner != null){
+            int TheRent= ((Ferry)c_field.fields[player.getPlayerPos()]).getRent();
+            System.out.println(TheRent + " rent");
+            guiView.gui.showMessage("There is other player who owms this field " +", his/her name is   " + TheOwner + " so you " + " have to pay the rent to " + TheOwner);
+            // add money to the owner player.
+            playerPayMoney(TheRent);
+            updatePlayerBalance(player);
+            //The player will pay to other player
+            getPlayer(TheOwner).addAmount(TheRent);
+            updatePlayerBalance(getPlayer(TheOwner));
+            //
+
+        }
+    }
+
+    public void parkingEdition() {
+        guiView.gui.showMessage(" you do not have to pay any cost it is free parking ");
 
     }
 

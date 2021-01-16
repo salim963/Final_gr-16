@@ -5,6 +5,7 @@ import java.awt.*;
 public class Ferry extends Field {
     private int rent;
     private int propertyPrice;
+    private String Owner;
 
     public Ferry(String name, Color backgroundColor, int propertyPrice, int rent) {
         super(name, backgroundColor);
@@ -13,6 +14,14 @@ public class Ferry extends Field {
 
 
     }
+    public String getOwner() {
+        return Owner;
+    }
+
+    public void setOwner(String owner) {
+        Owner = owner;
+    }
+
     public int getPropertyPrice() {
         return propertyPrice;
     }

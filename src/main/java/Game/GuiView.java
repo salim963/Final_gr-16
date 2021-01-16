@@ -106,13 +106,15 @@ public class GuiView {
     public void setupPlayers() {
 
        int number =  Integer.parseInt(gui.getUserSelection("How many players should be there ?",  "2","3","4","5","6"));
-       int balance = 30000;
+       int balance = 30000;String playerName;
+
        player = new Player[number];
+
+
         for (int i = 0; i < number; i++) {
 
-            String playerName = messageToPlayer("Player " + (i + 1) + ", Enter your name");
-
-            if (playerName.equals("")) {
+            playerName = gui.getUserString("Player " + (i + 1) + ", Enter your name");
+            if (playerName.equals(" ")) {
                 playerName = "Player " + (i + 1);
             }
 
@@ -122,9 +124,6 @@ public class GuiView {
     }
 
 
-    public String messageToPlayer(String message) {
-        return gui.getUserString(message);
-    }
 
     public void addUIPlayer(Player player, int amountOfPlayers) {
 
@@ -133,6 +132,7 @@ public class GuiView {
         }
         guiPlayer[player.getPlayerNumber()] = new GUI_Player(player.getName(), player.getBalance(), vehicleChoice(player.getPlayerNumber()));
         gui.addPlayer(guiPlayer[player.getPlayerNumber()]);
+        gui.getFields()[0].setCar(guiPlayer[player.getPlayerNumber()],true);
     }
 
 

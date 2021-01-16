@@ -1,4 +1,4 @@
-
+package Game;
 
 import chancekort.Chancekort;
 import chancekort.RykTilBestemtFelt;

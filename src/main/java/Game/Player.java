@@ -22,6 +22,21 @@ public class Player {
     private int PlayerMoveToNewPos;
 
 
+
+    public boolean isDead() {
+        return dead;
+    }
+
+    public void setDead(boolean dead) {
+        this.dead = dead;
+    }
+
+    private boolean dead;
+
+
+
+
+
     public String getName() {
         return name;
     }
