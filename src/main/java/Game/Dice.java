@@ -9,4 +9,9 @@ public class Dice {
        return random.nextInt(6)+1;
    }
 
+   public int pullChanceCard() {
+       Random random = new Random();
+       return random.nextInt(19)+1;
+   }
+
 }
