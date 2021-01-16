@@ -6,8 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Final_gr-16" />
         <module name="CDIOdel3_Matador" />
+        <module name="Final_gr-16" />
       </profile>
     </annotationProcessing>
   </component>
