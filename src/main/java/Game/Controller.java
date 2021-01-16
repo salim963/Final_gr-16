@@ -117,11 +117,18 @@ public class Controller {
 
         guiView.gui.getFields()[CorrentPlayerPpstion].setCar(guiView.guiPlayer[player.getPlayerNumber()], false);
         guiView.gui.getFields()[MoveCorrentPlayerPpstionTo].setCar(guiView.guiPlayer[player.getPlayerNumber()], true);
-
         player.setPlayerPos(MoveCorrentPlayerPpstionTo);
 
 
-    }
+        // tilføj 4000 hver gange passer start field
+        if (CorrentPlayerPpstion >= MoveCorrentPlayerPpstionTo ){
+            PlayerReciveMoney(4000);
+            updatePlayerBalance(player);
+        }
+
+
+
+        }
 
 
 
@@ -164,7 +171,7 @@ public class Controller {
 
         player.setBalance(newbalance);
     }
-    public void PlayerReciveMoney(String playerID, int chargeAmount){
+    public void PlayerReciveMoney( int chargeAmount){
 
         int newbalance= player.getBalance() + chargeAmount;
 
@@ -316,6 +323,10 @@ public class Controller {
 
     public void parkingEdition() {
         guiView.gui.showMessage(" you do not have to pay any cost it is free parking ");
+
+    }
+    public void getmoneystart() {
+
 
     }
 
