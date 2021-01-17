@@ -30,7 +30,6 @@ public class Controller {
 
     public Controller() {
         boolean endGame = true;
-
         while (endGame) {
 
             player =  nextPlayer();
@@ -40,6 +39,7 @@ public class Controller {
             updatePlayerBalance(player);
 
             if (player.getBalance() <= 0) {
+                guiView.showInfo("Spiller har vundet, spillet afsluttes");
                 endGame = false;
             }
         }
@@ -102,7 +102,6 @@ public class Controller {
     }
 
     public int updatePlayersPosition() {
-
         int currentPlayerPosition = player.getPlayerPos();
         int moveCurrentPlayersPositionTo = (player.getPlayerPos() + player.getPlayerMoveToNewPos())% guiView.gui.getFields().length;
 
@@ -145,8 +144,6 @@ public class Controller {
     }
 
     public void updatePlayerBalance(Player player) {
-
-
         guiView.guiPlayer[player.getPlayerNumber()].setBalance(player.getBalance());
     }
 
