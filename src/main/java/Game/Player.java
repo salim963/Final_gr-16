@@ -5,6 +5,16 @@ import java.awt.*;
 
 public class Player {
 
+    private String name;
+    private int playerNumber;
+    private int playerPos=0;
+    private Color color;
+    private int balance;
+    private int PlayerMoveToNewPos;
+    private boolean PlayerInJail;
+    private boolean dead;
+
+
 
     public Player(String name, int playerNumber, int balance ) {
         this.name = name;
@@ -13,14 +23,9 @@ public class Player {
 
     }
 
-    private String name;
-    private int playerNumber;
-    private int playerPos=0;
-    private Color color;
-    private int balance;
-    private int PlayerMoveToNewPos;
 
-
+    public Player() {
+    }
 
     public boolean isDead() {
         return dead;
@@ -30,7 +35,6 @@ public class Player {
         this.dead = dead;
     }
 
-    private boolean dead;
 
     public boolean isPlayerInJail() {
         return PlayerInJail;
@@ -40,7 +44,6 @@ public class Player {
         PlayerInJail = playerInJail;
     }
 
-    private boolean PlayerInJail;
 
 
 

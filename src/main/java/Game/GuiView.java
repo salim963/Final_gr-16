@@ -61,7 +61,6 @@ public class GuiView {
         fields[38] = new GUI_Street("Statskat", "Betal skat", "Du skal betale 100 til almenvellet ", "1", Color.BLACK, Color.white);
         fields[39] = new GUI_Street("rådhuspladsen", "pris: 4000", "leje af grund:1000,Med {et Hus 4000, to Huse 12000, tre Huse 28000, fire huse 34000, Hotel 40000}, hus,hotel pris: 4000", "1", Color.magenta, Color.white);
 
-
         return fields;
     }
     public GuiView() {

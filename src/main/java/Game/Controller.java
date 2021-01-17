@@ -29,19 +29,23 @@ public class Controller {
     }
 
     public Controller() {
+        boolean endGame = true;
 
-        while (true) {
+        while (endGame) {
 
             player =  nextPlayer();
-            //Playerlost();
 
             playerTurn();
-            fieldsDefinition();
+            landOnFields();
             updatePlayerBalance(player);
+
+            if (player.getBalance() <= 0) {
+                endGame = false;
+            }
         }
     }
 
-    public void Playerlost(){
+    public void playerLost(){
 
         if (player.isDead()){
             System.out.println("Spilleren har tabt");
@@ -65,7 +69,6 @@ public class Controller {
     }
 
     public void playerTurn() {
-
 
         guiView.gui.showMessage(player.getName() + "'s tur");
 
@@ -98,29 +101,23 @@ public class Controller {
 
     }
 
-    public void updatePlayersPosition() {
+    public int updatePlayersPosition() {
 
-        int CorrentPlayerPpstion = player.getPlayerPos();
+        int currentPlayerPosition = player.getPlayerPos();
         int moveCurrentPlayersPositionTo = (player.getPlayerPos() + player.getPlayerMoveToNewPos())% guiView.gui.getFields().length;
 
+        guiView.gui.getFields()[currentPlayerPosition].setCar(guiView.guiPlayer[player.getPlayerNumber()], false);
 
-            guiView.gui.getFields()[CorrentPlayerPpstion].setCar(guiView.guiPlayer[player.getPlayerNumber()], false);
-
-            guiView.gui.getFields()[moveCurrentPlayersPositionTo].setCar(guiView.guiPlayer[player.getPlayerNumber()], true);
-            player.setPlayerPos(moveCurrentPlayersPositionTo );
-
+        guiView.gui.getFields()[moveCurrentPlayersPositionTo].setCar(guiView.guiPlayer[player.getPlayerNumber()], true);
+        player.setPlayerPos(moveCurrentPlayersPositionTo );
 
         // tilføj 4000 hver gange passer start field
-        if (CorrentPlayerPpstion >= moveCurrentPlayersPositionTo ){
+        if (currentPlayerPosition >= moveCurrentPlayersPositionTo ){
             playerReceivesMoney(4000);
             updatePlayerBalance(player);
-
         }
 
-
-
-
-
+        return moveCurrentPlayersPositionTo;
     }
 
 
@@ -148,26 +145,28 @@ public class Controller {
     }
 
     public void updatePlayerBalance(Player player) {
-        guiView.guiPlayer[player.getPlayerNumber()].setBalance(player.getBalance());
-        //player.setPlayerPos(player.getPlayerPos());
 
+
+        guiView.guiPlayer[player.getPlayerNumber()].setBalance(player.getBalance());
     }
 
-    public void playerPayMoney(int chargeAmount){
+    public int playerPayMoney(int chargeAmount){
 
         int newBalance= player.getBalance() - chargeAmount;
 
         player.setBalance(newBalance);
+
+        return chargeAmount;
     }
+
     public void playerReceivesMoney(int chargeAmount){
 
         int newBalance= player.getBalance() + chargeAmount;
 
         player.setBalance(newBalance);
-
     }
 
-    public void fieldsDefinition(){
+    public void landOnFields(){
 
         Field f = controllerField.fields[player.getPlayerPos()];
         String t = String.valueOf(f);
@@ -216,7 +215,6 @@ public class Controller {
         GUI_Street street = (GUI_Street) guiView.gui.getFields()[player.getPlayerPos()];
         street.setHouses(0);
     }
-
 
     public void estateHandling(){
 

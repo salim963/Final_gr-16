@@ -10,10 +10,21 @@ public class DiceTest {
     Dice dice = new Dice();
 
     @Test
-    void rolleDice() {
+    void rollDice() {
+        for (int i = 0; i < 10000; i ++) {
+            int value = dice.rollDice();
+            System.out.println(value);
+            assertTrue(value >= 1 && value <= 6, "Success");
+        }
+    }
 
-        int value = dice.rollDice();
-        assertEquals(value >= 1 && value <= 6,true ,"Test" );
+    @Test
+    void pullChanceCard() {
+        for (int i = 0; i < 10000; i ++) {
+            int value = dice.pullChanceCard();
+            System.out.println(value);
+            assertTrue(value >= 1 && value <= 19, "Success");
+        }
     }
 
 }
