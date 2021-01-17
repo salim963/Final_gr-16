@@ -195,6 +195,7 @@ public class Controller {
 
         else if(Objects.equals(t, "ChanceField")){
             pullChanceCard();
+            updatePlayersPosition();
 
         } else if(Objects.equals(t, "GotoJail")){
             jailHandling();
