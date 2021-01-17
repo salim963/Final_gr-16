@@ -310,11 +310,11 @@ public class Controller {
 
     public void jailHandling() {
 
-        guiView.gui.showMessage(" Du skal gå til fængsel");
+        guiView.gui.showMessage(" Du skal gå til fængsel og betale 1000 for at komme ud");
         // player.setPlayerInJail(true);
         player.setPlayerMoveToNewPos(20);
         updatePlayersPosition();
-        playerPayMoney(4000);
+        playerPayMoney(5000);
 
     }
 
